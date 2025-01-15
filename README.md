@@ -5,7 +5,7 @@ We developed a novel method for measuring the 'echo' of strategic communications
 This codebase has been tested on **Python 3.12.3** using the module versions listed in **requirements.txt**.
 
 The modules used in this library can be installed using:
-pip install -r requirments.txt
+pip install -r requirements.txt
 
 The required embedding model can be downloaded using:
 python -m spacy download en_core_web_sm
@@ -20,6 +20,10 @@ python -m spacy download en_core_web_sm
     - **embed_prs.py**: Calculate the text embeddings for the press releases, including sentencisation and averaging to determine document-level embeddings.
     - **embed_text.py**: General functions for cleaning and embedding any text documents.
     - **embed_tweets.py**: Calculate the text embeddings for the tweets.
+
+ ### 2_similarities
+ This folder contains the necessary code to calculate the cosine similarity between the press release and tweet embeddings.
+    - **text_tweet_sims.py**: Use the previously computed embeddings to calculate the cosine similarity between a press release and all tweets collected within a few days of the press release publication.
 
  **utils.py**
  This file contains several helper functions for file I/O, text cleaning and calculation of the echo score on a set of similarities.
