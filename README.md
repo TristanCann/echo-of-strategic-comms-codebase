@@ -15,7 +15,7 @@ python -m spacy download en_core_web_sm
  - **tweet_ids.txt**: List of IDs for all tweets included in this study, one per line. This file is too large to be stored in Github and can be found on [Figshare](https://dx.doi.org/10.6084/m9.figshare.28196000).
 
 ## Python code
- ###1_embedding###
+ ### 1_embedding
  This folder contains the necessary code to compute the text embeddings for the press releases and tweets.
     - **embed_prs.py**: Calculate the text embeddings for the press releases, including sentencisation and averaging to determine document-level embeddings.
     - **embed_text.py**: General functions for cleaning and embedding any text documents.
