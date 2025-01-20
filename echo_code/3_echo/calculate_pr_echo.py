@@ -18,7 +18,7 @@ SAVE_FOLDER = ''
 SAMPLE = False
 
 THRESHOLD = 0.7
-WINDOW_PAIRS = [(1,3),(1,7),(3,1),(3,3),(3,7),(7,1),(7,7)]
+WINDOW_PAIRS = [(1,1),(1,3),(1,7),(3,1),(3,3),(3,7),(7,1),(7,3),(7,7)]
 INCLUDE_RELEASE_DAY_IN_POST = True
 
 fnames = sorted(os.listdir(SIM_DF_FOLDER))

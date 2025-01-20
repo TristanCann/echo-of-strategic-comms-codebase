@@ -151,13 +151,13 @@ def calculate_influence(sim_df, pr_date, threshold,
     daily_count = sim_df.date.value_counts().sort_index() # get daily count of all tweets before further filtering
     
     # get dates in pre window, calculated from press release date and window size
-    pre_dates = sorted([pr_date - timedelta(days=i) for i in range(window_pre, 0, -1)]) # stops at 1, so includes as far as day before pr
+    pre_dates = sorted([pd.Timestamp(pr_date - timedelta(days=i)) for i in range(window_pre, 0, -1)]) # stops at 1, so includes as far as day before pr
     
     # get dates in post window - by default includes press release date 
     if include_release_day_in_post:
-        post_dates = sorted([pr_date + timedelta(days=i) for i in range(0, window_post)])
+        post_dates = sorted([pd.Timestamp(pr_date + timedelta(days=i)) for i in range(0, window_post)])
     else:
-        post_dates = sorted([pr_date + timedelta(days=i) for i in range(1, window_post+1)])
+        post_dates = sorted([pd.Timestamp(pr_date + timedelta(days=i)) for i in range(1, window_post+1)])
 
     # get the total tweet count in each of the pre and post windows
     ## Note the use of get with a default here as some audiences will have days in which there are no tweets.
