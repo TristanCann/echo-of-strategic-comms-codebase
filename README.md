@@ -5,10 +5,10 @@ We developed a novel method for measuring the 'echo' of strategic communications
 This codebase has been tested on **Python 3.12.3** using the module versions listed in **requirements.txt**.
 
 The modules used in this library can be installed using:
-pip install -r requirements.txt
+`pip install -r requirements.txt`
 
 The required embedding model can be downloaded using:
-python -m spacy download en_core_web_sm
+`python -m spacy download en_core_web_sm`
 
 ## Data
  - **pr_urls.txt**: List of URLs for all press releases included in this study, one per line. 
@@ -24,6 +24,10 @@ python -m spacy download en_core_web_sm
  ### 2_similarities
  This folder contains the necessary code to calculate the cosine similarity between the press release and tweet embeddings.
     - **text_tweet_sims.py**: Use the previously computed embeddings to calculate the cosine similarity between a press release and all tweets collected within a few days of the press release publication.
+
+ ### 3_echo
+ This folder contains the necessary code to use the computed cosine similarity values to calculate the echo of a given press release.
+    - **calculate_pr_echo.py**: Use the previously computed similarity scores to calculate the both echo metrics of a range of (pre,post) window sizes.
 
  **utils.py**
  This file contains several helper functions for file I/O, text cleaning and calculation of the echo score on a set of similarities.
