@@ -44,6 +44,8 @@ def update_tweet_df(tweet_df, dh_strings):
         
         try:
             df = load_tweet_file(fname)
+
+            #df.drop(labels=['text'],axis='columns')
         except FileNotFoundError:
             print(f'file for the hour {dh} does not exist')
             pass
@@ -68,13 +70,15 @@ def update_tweet_df(tweet_df, dh_strings):
 ### program ### 
 
 ## load and filter dataframe of press releases
-pr_df = pd.read_json(PR_FILEPATH).set_index('fname').sort_values('date') # fname is our unique identifier for each press release
+pr_df = pd.read_json(PR_FILEPATH).set_index('fname') # fname is our unique identifier for each press release
 len0 = len(pr_df)
 
 with open(PR_EMBED_FILEPATH,'rb') as f:
     pr_embeds = np.load(f)
 
 pr_df['embeddings'] = list(pr_embeds)
+
+pr_df = pr_df.sort_values('date')
 
 # filter prs - remove those with 7-day windows falling outside
 pr_df = pr_df.loc[ ( (pr_df.date - timedelta(days=WINDOW[0])).dt.date >= TWEET_RANGE[0] ) & ( (pr_df.date + timedelta(days=WINDOW[1])).dt.date <= TWEET_RANGE[1] ) ]
@@ -132,7 +136,7 @@ for pr_fname, row in tqdm(pr_df.iterrows(), total=len(pr_df)):
     tweet_df['sim'] = np.concatenate(dh_sims) # combine all dh file sims together and add sims as dataframe column
 
     # clear any duplicate rows emerging from the df updating.
-    out = tweet_df[[not t for t in tweet_df.index.duplicated()]]
+    out = tweet_df[~tweet_df.index.duplicated()].drop(labels=['text'],axis='columns')
 
     # filter out rows not in window dates - this filters out the unneeded overflow rows (loaded in case of timezone weirdness)
     out.loc[out.date.isin(pr_window_dates)].to_json(f'{SIM_SAVE_FOLDER}{pr_fname[:-4]}.json')
