@@ -21,7 +21,7 @@ TWEET_EMBEDDINGS_FOLDER = ''
 TWEET_FOLDER = ''
 SIM_SAVE_FOLDER = ''
 
-WINDOW = (8,8)
+WINDOW = (7,7)
 
 # valid range for pr date windows
 # these dates are the extremes of our Twitter collection
@@ -78,14 +78,14 @@ with open(PR_EMBED_FILEPATH,'rb') as f:
 
 pr_df['embeddings'] = list(pr_embeds)
 
-pr_df = pr_df.sort_values('date')
+pr_df = pr_df.sort_values(['date','org'])
 
 # filter prs - remove those with 7-day windows falling outside
 pr_df = pr_df.loc[ ( (pr_df.date - timedelta(days=WINDOW[0])).dt.date >= TWEET_RANGE[0] ) & ( (pr_df.date + timedelta(days=WINDOW[1])).dt.date <= TWEET_RANGE[1] ) ]
 len1 = len(pr_df)
 print(f'removed {len0 - len1} out-of-bounds press releases')
 
-already_calculated = [f[:-4] for f in os.listdir(SIM_SAVE_FOLDER) if f.endswith('.json')] # get list of similarity files already present in save folder
+already_calculated = [f[:-5] for f in os.listdir(SIM_SAVE_FOLDER) if f.endswith('.json')] # get list of similarity files already present in save folder
 if isinstance(FORCE_RECALCULATE, bool): # if we're blanket recalculating all or nothing (i.e. True or False)
     if FORCE_RECALCULATE is False: # if we're not forcing any recalculation 
         pr_df = pr_df.loc[~pr_df.index.str[:-4].isin(already_calculated)] # remove all files that have been calculated already from the working dataframe
