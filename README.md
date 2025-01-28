@@ -21,17 +21,17 @@ The required embedding model can be downloaded using:
 ## echo_code
  ### 1_embedding
  This folder contains the necessary code to compute the text embeddings for the press releases and tweets.
-    - **embed_prs.py**: Calculate the text embeddings for the press releases, including sentencisation and averaging to determine document-level embeddings.
-    - **embed_text.py**: General functions for cleaning and embedding any text documents.
-    - **embed_tweets.py**: Calculate the text embeddings for the tweets.
+   - **embed_prs.py**: Calculate the text embeddings for the press releases, including sentencisation and averaging to determine document-level embeddings.
+   - **embed_text.py**: General functions for cleaning and embedding any text documents.
+   - **embed_tweets.py**: Calculate the text embeddings for the tweets.
 
  ### 2_similarities
  This folder contains the necessary code to calculate the cosine similarity between the press release and tweet embeddings.
-    - **text_tweet_sims.py**: Use the previously computed embeddings to calculate the cosine similarity between a press release and all tweets collected within a few days of the press release publication.
+   - **text_tweet_sims.py**: Use the previously computed embeddings to calculate the cosine similarity between a press release and all tweets collected within a few days of the press release publication.
 
  ### 3_echo
  This folder contains the necessary code to use the computed cosine similarity values to calculate the echo of a given press release.
-    - **calculate_pr_echo.py**: Use the previously computed similarity scores to calculate the both echo metrics of a range of (pre,post) window sizes.
+   - **calculate_pr_echo.py**: Use the previously computed similarity scores to calculate the both echo metrics of a range of (pre,post) window sizes.
    
  **utils.py**
  This file contains several helper functions for file I/O, text cleaning and calculation of the echo score on a set of similarities.
