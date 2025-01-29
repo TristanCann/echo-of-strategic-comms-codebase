@@ -2,7 +2,7 @@
 
 We developed a novel method for measuring the 'echo' of strategic communications that uses semantic similarity to identify texts that repeat similar messages without requiring keyword searches. This method was tested on a set of press releases from environmentally-active organisations and their potential impact on Twitter discussion of climate change. Full details of this work are available at [paper under review].
 
-This codebase has been tested on **Python 3.12.3** using the module versions listed in **requirements.txt**. Much of the methodology here is compatible with other Python and module versions, but note that the sentencisation behaviour of Spacy has been observed to change and will therefore have a small effect on similarity scores for longer texts. Scripts that draw figures also assume a local installation of LaTeX, but this behvaiour can be disabled by removing lines that read **plt.rc('text', usetex = True)**.
+This codebase has been tested on **Python 3.12.3** using the module versions listed in **requirements.txt**. Much of the methodology here is compatible with other Python and module versions, but note that the sentencisation behaviour of Spacy has been observed to change and will therefore have a small effect on similarity scores for longer texts. Scripts that draw figures also assume a local installation of LaTeX, but this behaviour can be disabled by removing lines that read `plt.rc('text', usetex = True)`.
 
 The modules used in this codebase can be installed using:
 `pip install -r requirements.txt`
