@@ -7,7 +7,7 @@ This codebase has been tested on **Python 3.12.3** using the module versions lis
 The modules used in this codebase can be installed using:
 `pip install -r requirements.txt`
 
-The required embedding model can be downloaded using:
+The required Spacy model can be downloaded using:
 `python -m spacy download en_core_web_sm`
 
 ## data
