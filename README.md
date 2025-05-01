@@ -1,6 +1,6 @@
 # Codebase and data references for "Using Semantic Similarity to Measure the Echo of Strategic Communications"
 
-We developed a novel method for measuring the 'echo' of strategic communications that uses semantic similarity to identify texts that repeat similar messages without requiring keyword searches. This method was tested on a set of press releases from environmentally-active organisations and their potential impact on Twitter discussion of climate change. Full details of this work are available at [paper under review].
+We developed a novel method for measuring the 'echo' of strategic communications that uses semantic similarity to identify texts that repeat similar messages without requiring keyword searches. This method was tested on a set of press releases from environmentally-active organisations and their potential impact on Twitter discussion of climate change. Full details of this work are available at [EPJ Data Science](https://link.springer.com/article/10.1140/epjds/s13688-025-00538-w).
 
 This codebase has been tested on **Python 3.12.3** using the module versions listed in **requirements.txt**. Much of the methodology here is compatible with other Python and module versions, but note that the sentencisation behaviour of Spacy has been observed to change and will therefore have a small effect on similarity scores for longer texts. Scripts that draw figures also assume a local installation of LaTeX, but this behaviour can be disabled by removing lines that read `plt.rc('text', usetex = True)`.
 
